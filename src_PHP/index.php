@@ -14,12 +14,12 @@
 </head>
 <body>
 <?php
-for ($i=0; $i < $_GET['n']; $i++) {
-    //$id=$i;
-    mt_srand();
-    $id=mt_rand();
-    echo '<a href="./alchemy.php?id='.$id.'" target="_blank"><div class="cerchio"><small>#'.$id.'</small><img src="./alchemy.php?id='.$id.'"></div></a>';
-}
+    for ($i=0; $i < $_GET['n']; $i++) {
+        mt_srand();
+        $id=mt_rand();
+        //$id=$i;
+        echo '<a href="./alchemy.php?id='.$id.'" target="_blank"><div class="cerchio"><small>#'.$id.'</small><img src="./alchemy.php?id='.$id.'"></div></a>';
+    }
 ?>
 </body>
 </html>
