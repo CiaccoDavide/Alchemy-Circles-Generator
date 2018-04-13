@@ -1,6 +1,8 @@
 # Alchemy-Circles-Generator
 A simple procedural generator of alchemy circles
 
+You can [test it online](http://ciaccodavi.de/qbdp/acg/)
+
 Using a PRNG will make the random generation procedural! You can use ![this PRNG](https://github.com/CiaccoDavide/CiaccoPRNG) for PHP and C#.
 
 Monochrome:
