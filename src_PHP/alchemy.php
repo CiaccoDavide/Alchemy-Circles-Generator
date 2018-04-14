@@ -1,5 +1,5 @@
 <?php
-    $id=$_GET['id'];
+    $id = isset($_GET['id']) ? $_GET['id'] : id;
     mt_srand($id);
 
     $pixelsize = 2;
@@ -189,4 +189,3 @@
 
         return $values;
     }
-?>
