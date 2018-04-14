@@ -1,5 +1,5 @@
 <?php
-    $id = isset($_GET['id']) ? $_GET['id'] : id;
+    $id = isset($_GET['id']) ? $_GET['id'] : 0;
     mt_srand($id);
 
     $pixelsize = 2;
@@ -47,9 +47,7 @@
 
     if($lati%2 == 0)
     {
-        $latis = mt_rand(2, 6);
-
-        while($latis%2 != 0) $latis = mt_rand(3, 6);
+        while(($latis = mt_rand(3, 6))%2 != 0);
         
         imagefilledpolygon($img, drawPoly($latis, $coloresnf, 180, $radius, $size), $latis, $coloresnf);
         imagepolygon($img, drawPoly($latis, $colore, 180, $radius, $size), $latis, $colore);
@@ -62,9 +60,7 @@
     }
     else
     {
-        $latis = mt_rand(2, 6);
-
-        while($latis%2 == 0) $latis = mt_rand(3, 6);
+        while(($latis = mt_rand(3, 6))%2 != 0);
 
         imagefilledpolygon($img, drawPoly($latis, $coloresnf, 180, $radius, $size), $latis, $coloresnf);
         imagepolygon($img, drawPoly($latis, $colore, 180, $radius, $size), $latis, $colore);
@@ -84,7 +80,7 @@
             imagefilledpolygon($img, drawPoly($lati + 4, $colore, 0, $radius / 2, $size), $lati + 4, $coloresnf);
             imagepolygon($img, drawPoly($lati + 4, $colore, 0, $radius / 2, $size), $lati + 4, $colore);
         }
-        elseif($ronad%2 == 0)
+        elseif($ronad%2 == 0 && $lati > 5)
         {
             for ($l = 0; $l < $lati - 2; $l++)
             {
@@ -102,17 +98,13 @@
 
         if($lati%2 == 0)
         {
-            $latis = mt_rand(2, 8);
-            
-            while($latis%2 != 0) $latis = mt_rand(3, 8);
+            while(($latis = mt_rand(3, 8))%2 != 0);
 
             imagepolygon($img, drawPoly($latis, $colore, 180, ($radius / 3) * 2, $size), $latis, $colore);
         }
         else
         {
-            $latis = mt_rand(2, 8);
-            
-            while($latis%2 == 0) $latis = mt_rand(3, 8);
+            while(($latis = mt_rand(3, 8))%2 == 0);
 
             imagepolygon($img, drawPoly($latis, $colore, 180, ($radius / 3) * 2, $size), $latis, $colore);
         }
