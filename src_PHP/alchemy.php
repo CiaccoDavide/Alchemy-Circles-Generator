@@ -14,7 +14,7 @@
     $colore = imagecolorallocate($img, 255, 255, 255);
 
     // random color
-    if(empty($_GET['coloured']))
+    if(!empty($_GET['coloured']))
     {
         $coloreR = mt_rand($ncol, $xcol);
         $coloreG = mt_rand($ncol, $xcol);
