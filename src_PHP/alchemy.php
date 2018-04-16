@@ -47,7 +47,8 @@
 
     if($lati%2 == 0)
     {
-        while(($latis = mt_rand(3, 6))%2 != 0);
+        $latis = mt_rand(2, 6);
+        while($latis%2 != 0) $latis = mt_rand(3, 6);
         
         imagefilledpolygon($img, drawPoly($latis, $coloresnf, 180, $radius, $size), $latis, $coloresnf);
         imagepolygon($img, drawPoly($latis, $colore, 180, $radius, $size), $latis, $colore);
@@ -98,7 +99,8 @@
 
         if($lati%2 == 0)
         {
-            while(($latis = mt_rand(3, 8))%2 != 0);
+            $latis = mt_rand(2, 8);
+            while($latis%2 != 0) $latis = mt_rand(3, 8);
 
             imagepolygon($img, drawPoly($latis, $colore, 180, ($radius / 3) * 2, $size), $latis, $colore);
         }
