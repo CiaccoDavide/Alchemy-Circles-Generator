@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -14,7 +15,7 @@
 </head>
 <body>
 <?php
-    for ($i=0; $i < $_GET['n']; $i++) {
+    for ($i=isset($_GET['n'])?$_GET['n']:100; $i > 0; $i--) {
         mt_srand();
         $id=mt_rand();
         //$id=$i;
