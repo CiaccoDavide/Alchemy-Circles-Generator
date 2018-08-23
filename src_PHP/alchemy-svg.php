@@ -154,8 +154,11 @@
             while($latis%2 != 0) $latis = mt_rand(3, 8);
 
             /** imagepolygon($img, drawPoly($latis, $colore, 180, ($radius / 3) * 2, $size), $latis, $colore); */
-            $polygon = drawPolygon($latis, 180, ($radius / 3) * 2, $size, $colore);
-            $doc->addChild($polygon);
+            /** imagepolygon fails to generate with only 2 points, but SVG is happy to. Skip the SVG so it matches */
+            if ($latis !== 2) {
+                $polygon = drawPolygon($latis, 180, ($radius / 3) * 2, $size, $colore);
+                $doc->addChild($polygon);
+            }
         }
         else
         {
