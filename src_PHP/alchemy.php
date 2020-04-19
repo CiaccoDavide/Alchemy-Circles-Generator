@@ -32,12 +32,12 @@
 
     // draw the circle:
     // circle's center coordinates and radius
-    $hex_x = $size / 2; //for readability
-    $hex_y = $size / 2; //for readability
+    $center_x = $size / 2; //for readability
+    $center_y = $size / 2; //for readability
     $radius = ($size / 2) * 3 / 4;
 
     // draw a full circle in the foreground color
-    imagearc($img, $size / 2, $size / 2, $radius * 2, $radius * 2, 0, 360, $colore);
+    imagearc($img, $center_x, $center_y, $radius * 2, $radius * 2, 0, 360, $colore);
 
     // draw a n-sided polygon with n between 4 and 8
     $lati = mt_rand(4, 8);
@@ -46,7 +46,7 @@
     for ($l = 0; $l < $lati; $l++)
     {
         $ang = deg2rad((360 / ($lati))) * $l;
-        imageline($img, ($size / 2), ($size / 2), ($size / 2) + $radius * cos($ang), ($size / 2) + $radius * sin($ang), $colore);
+        imageline($img, $center_x, $center_y, $center_x + $radius * cos($ang), $center_y + $radius * sin($ang), $colore);
     }
 
     // if polygon has even number of sides
@@ -63,7 +63,7 @@
         for ($l = 0; $l < $latis; $l++)
         {
             $ang = deg2rad((360 / $latis)) * $l;
-            imageline($img, ($size / 2), ($size / 2), ($size / 2) + $radius * cos($ang), ($size / 2) + $radius * sin($ang), $colore);
+            imageline($img, $center_x, $center_y, $center_x + $radius * cos($ang), $center_y + $radius * sin($ang), $colore);
         }
     }
     else
@@ -85,7 +85,7 @@
             for ($l = 0; $l < $lati + 4; $l++)
             {
                 $ang = deg2rad((360 / ($lati + 4))) * $l;
-                imageline($img, ($size / 2), ($size / 2), ($size / 2)+((($radius / 8) * 5) + 2) * cos($ang), ($size / 2) + ((($radius / 8) * 5) + 2) * sin($ang), $colore);
+                imageline($img, $center_x, $center_y, $center_x + ((($radius / 8) * 5) + 2) * cos($ang), $center_y + ((($radius / 8) * 5) + 2) * sin($ang), $colore);
             }
             imagefilledpolygon($img, drawPoly($lati + 4, $colore, 0, $radius / 2, $size), $lati + 4, $coloresnf);
             imagepolygon($img, drawPoly($lati + 4, $colore, 0, $radius / 2, $size), $lati + 4, $colore);
@@ -95,7 +95,7 @@
             for ($l = 0; $l < $lati - 2; $l++)
             {
                 $ang = deg2rad((360 / ($lati - 2))) * $l;
-                imageline($img, ($size / 2), ($size / 2), ($size / 2) + ((($radius / 8) * 5) + 2) * cos($ang), ($size / 2) + ((($radius / 8) * 5) + 2) * sin($ang), $colore);
+                imageline($img, $center_x, $center_y, $center_x + ((($radius / 8) * 5) + 2) * cos($ang), $center_y + ((($radius / 8) * 5) + 2) * sin($ang), $colore);
             }
             imagefilledpolygon($img, drawPoly($lati - 2, $colore, 0, $radius / 4, $size), $lati - 2, $coloresnf);
             imagepolygon($img, drawPoly($lati - 2, $colore, 0, $radius / 4, $size), $lati - 2, $colore);
@@ -105,7 +105,7 @@
     // with a 60% chance:
     if(mt_rand(0,4)%2 == 0)
     {
-        imagearc($img, $size / 2, $size / 2, ($radius / 8) * 11, ($radius / 8) * 11, 0, 360, $colore);
+        imagearc($img, $center_x, $center_y, ($radius / 8) * 11, ($radius / 8) * 11, 0, 360, $colore);
 
         if($lati%2 == 0)
         {
@@ -131,8 +131,8 @@
             $angdiff = deg2rad(360 / ($latis));
             $posax = (($radius / 18) * 11) * cos($i * $angdiff);
             $posay = (($radius / 18) * 11) * sin($i * $angdiff);
-            imagefilledarc($img, $size / 2 + $posax, $size / 2 + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
-            imagearc($img, $size / 2 + $posax, $size / 2 + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $colore);
+            imagefilledarc($img, $center_x + $posax, $center_y + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
+            imagearc($img, $center_x + $posax, $center_y + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $colore);
         }
     }
     elseif($case == 1)
@@ -142,30 +142,30 @@
             $angdiff = deg2rad(360 / $latis);
             $posax = $radius * cos($i * $angdiff);
             $posay = $radius * sin($i * $angdiff);
-            imagefilledarc($img, $size / 2 + $posax, $size / 2 + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
-            imagearc($img, $size / 2 + $posax, $size / 2 + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $colore);
+            imagefilledarc($img, $center_x + $posax, $center_y + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
+            imagearc($img, $center_x + $posax, $center_y + $posay, ($radius / 44) * 12, ($radius / 44) * 12, 0, 360, $colore);
         }
     }
     elseif($case == 2)
     {
-        imagearc($img, $size / 2, $size / 2, ($radius / 18) * 12, ($radius / 18) * 12, 0, 360, $colore);
-        imagefilledarc($img, $size / 2, $size / 2, ($radius / 22) * 12, ($radius / 22) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
-        imagearc($img, $size / 2, $size / 2, ($radius / 22) * 12, ($radius / 22) * 12, 0, 360, $colore);
+        imagearc($img, $center_x, $center_y, ($radius / 18) * 12, ($radius / 18) * 12, 0, 360, $colore);
+        imagefilledarc($img, $center_x, $center_y, ($radius / 22) * 12, ($radius / 22) * 12, 0, 360, $coloresnf, IMG_ARC_PIE);
+        imagearc($img, $center_x, $center_y, ($radius / 22) * 12, ($radius / 22) * 12, 0, 360, $colore);
     }
     elseif($case == 3)
     {
         for ($i = 0; $i < $latis; $i++)
         {
             $ang = deg2rad((360 / ($latis))) * $i;
-            imageline($img, ($size / 2) + (($radius / 3) * 2) * cos($ang), ($size / 2) + (($radius / 3) * 2) * sin($ang), ($size / 2) + $radius * cos($ang), ($size / 2) + $radius * sin($ang), $colore);
+            imageline($img, $center_x + (($radius / 3) * 2) * cos($ang), $center_y + (($radius / 3) * 2) * sin($ang), $center_x + $radius * cos($ang), $center_y + $radius * sin($ang), $colore);
         }
         if($latis == $lati)
         {
         }
         else
         {
-            imagefilledarc($img, $size / 2, $size / 2, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $coloresnf, IMG_ARC_PIE);
-            imagearc($img, $size / 2, $size / 2, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $colore);
+            imagefilledarc($img, $center_x, $center_y, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $coloresnf, IMG_ARC_PIE);
+            imagearc($img, $center_x, $center_y, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $colore);
             $lati = mt_rand(3, 6);
             imagepolygon($img, drawPoly($lati, $colore, 0, ($radius / 4) * 5, $size), $lati, $colore);
             imagepolygon($img, drawPoly($lati, $colore, 180, ($radius / 3) * 2, $size), $lati, $colore);
