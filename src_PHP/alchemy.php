@@ -161,10 +161,7 @@
             $ang = deg2rad((360 / ($latis))) * $i;
             imageline($img, $center_x + (($radius / 3) * 2) * cos($ang), $center_y + (($radius / 3) * 2) * sin($ang), $center_x + $radius * cos($ang), $center_y + $radius * sin($ang), $colore);
         }
-        if($latis == $lati)
-        {
-        }
-        else
+        if($latis != $lati)
         {
             imagefilledarc($img, $center_x, $center_y, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $coloresnf, IMG_ARC_PIE);
             imagearc($img, $center_x, $center_y, ($radius / 3) * 4, ($radius / 3) * 4, 0, 360, $colore);
