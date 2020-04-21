@@ -68,7 +68,8 @@
     }
     else
     {
-        while(($latis = mt_rand(3, 6))%2 != 0);
+	// generate random number from the set {4, 6} by generating 2 or 3 and multiplying it by 2
+	$latis = mt_rand(2, 3) * 2;
 
         imagefilledpolygon($img, drawPoly($latis, $coloresnf, 180, $radius, $size), $latis, $coloresnf);
         imagepolygon($img, drawPoly($latis, $colore, 180, $radius, $size), $latis, $colore);
@@ -117,7 +118,8 @@
         }
         else
         {
-            while(($latis = mt_rand(3, 8))%2 == 0);
+	    // generate random number from the set {3, 5, 7} by calculating 2*x+1, where x is in {1, 2, 3}
+	    $latis = 2 * mt_rand(1, 3) + 1;
 
             imagepolygon($img, drawPoly($latis, $colore, 180, ($radius / 3) * 2, $size), $latis, $colore);
         }
