@@ -408,13 +408,17 @@ public static class TextureDraw
     private static Vector2[] getPoints(int sides, float rot, float radius, float size)
     {
         Vector2[] values = new Vector2[sides];
-        float angdiff = Mathf.Deg2Rad * (360 / (sides));
-        rot = Mathf.Deg2Rad * (rot);
-        for (int i = 0; i < sides; i++)
+        
+        if(sides > 0)
         {
-            // trova i punti sulla circonferenza
-            values[i].x = (size / 2) + radius * Mathf.Cos(i * angdiff + rot); // X
-            values[i].y = (size / 2) + radius * Mathf.Sin((i) * angdiff + rot); // Y
+            float angdiff = Mathf.Deg2Rad * (360 / (sides));
+            rot = Mathf.Deg2Rad * (rot);
+            for (int i = 0; i < sides; i++)
+            {
+                // trova i punti sulla circonferenza
+                values[i].x = (size / 2) + radius * Mathf.Cos(i * angdiff + rot); // X
+                values[i].y = (size / 2) + radius * Mathf.Sin((i) * angdiff + rot); // Y
+            }
         }
 
         return values;
