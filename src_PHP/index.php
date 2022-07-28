@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<div class="content">
 <?php
     for ($i=isset($_GET['n'])?$_GET['n']:100; $i > 0; $i--) {
         mt_srand();
@@ -29,5 +30,9 @@
         echo '<a href="'. $URL. '?id='.$id.'" target="_blank"><div class="cerchio"><small>#'.$id.'</small><img src="'.$URL.'?id='.$id.'"></div></a>';
     }
 ?>
+</div>
+<footer>
+ View on GitHub:	<a href="https://github.com/CiaccoDavide/Alchemy-Circles-Generator">CiaccoDavide/Alchemy-Circles-Generator</a>
+</footer>
 </body>
 </html>
